@@ -10,16 +10,22 @@ function App() {
     setLoading(false);
     setReviews(data);
   }
-
+  function autoSLide() {
+    //console.log(reviews.length - 1, value, 'before');
+    reviews.length - 1 === value ? setValue(0) : setValue(value + 1);
+  }
   useEffect(() => {
     getReviews();
   });
-  console.log(reviews);
 
   if (loading) {
     return <h2>Loading...</h2>;
   } else {
+    setTimeout(autoSLide, 5000);
+
+    //console.log(reviews.length - 1, value, 'after');
     const { id, image, name, quote, title } = reviews[value];
+
     function slideControl(slideAction) {
       if (slideAction === 'next') {
         console.log(value, reviews.length, 'check this');
