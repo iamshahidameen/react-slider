@@ -6,6 +6,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [value, setValue] = useState(0);
+  const [sliderClassName, setSliderClassName] = useState('');
   function getReviews() {
     setLoading(false);
     setReviews(data);
@@ -43,6 +44,15 @@ function App() {
         }
       }
     }
+
+    function sliderClass() {
+      reviews.map((review, index) => {
+        if (index === value) {
+          //return setSliderClassName('activeSlide');
+        }
+      });
+    }
+    sliderClass();
     return (
       <>
         <section className="section">
@@ -52,26 +62,8 @@ function App() {
             </h2>
           </div>
           <div className="section-center">
-            {/* {reviews.map((review) => {
-              console.log(review);
-              const { id, image, name, quote, title } = review;
-              return (
-                <article className="nextSlide" key={id}>
-                  <img
-                    src={image}
-                    alt="maria ferguson"
-                    className="person-img"
-                  />
-                  <h4>{name}</h4>
-                  <p className="title">{title}</p>
-                  <p className="text">{quote}</p>
-                  <FaQuoteRight className="icon" />
-                </article>
-              );
-            })} */}
-
             {
-              <article className="nextSlide" key={id}>
+              <article className={sliderClassName} key={id}>
                 <img src={image} alt="maria ferguson" className="person-img" />
                 <h4>{name}</h4>
                 <p className="title">{title}</p>
